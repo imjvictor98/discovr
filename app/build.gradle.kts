@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.junit5)
 }
 
-val packageName = "com.mitch.appname"
+val packageName = "br.com.cvj.discovr"
 
 android {
     namespace = packageName
