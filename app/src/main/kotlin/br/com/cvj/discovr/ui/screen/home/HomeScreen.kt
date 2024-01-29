@@ -1,9 +1,16 @@
 package br.com.cvj.discovr.ui.screen.home
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.cvj.discovr.R
@@ -56,37 +64,49 @@ fun HomeScreen(
                 )
             }
 
-            Column(
-                modifier = modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Button(onClick = { setActiveDialog(ActiveDialog.Language) }) {
-                    Text(text = stringResource(id = R.string.change_language))
-                }
-
-                Button(onClick = { setActiveDialog(ActiveDialog.Theme) }) {
-                    Text(text = stringResource(R.string.change_theme))
-                }
-
-                when (activeDialog) {
-                    ActiveDialog.None -> Unit
-
-                    ActiveDialog.Language -> {
-                        LanguagePickerDialog(
-                            selectedLanguage = uiState.language,
-                            onDismiss = { setActiveDialog(ActiveDialog.None) },
-                            onConfirm = onChangeLanguage
-                        )
+            Box(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    modifier = modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Button(onClick = { setActiveDialog(ActiveDialog.Language) }) {
+                        Text(text = stringResource(id = R.string.change_language))
                     }
 
-                    ActiveDialog.Theme -> {
-                        ThemePickerDialog(
-                            selectedTheme = uiState.theme,
-                            onDismiss = { setActiveDialog(ActiveDialog.None) },
-                            onConfirm = onChangeTheme
-                        )
+                    Button(onClick = { setActiveDialog(ActiveDialog.Theme) }) {
+                        Text(text = stringResource(R.string.change_theme))
                     }
+
+                    when (activeDialog) {
+                        ActiveDialog.None -> Unit
+
+                        ActiveDialog.Language -> {
+                            LanguagePickerDialog(
+                                selectedLanguage = uiState.language,
+                                onDismiss = { setActiveDialog(ActiveDialog.None) },
+                                onConfirm = onChangeLanguage
+                            )
+                        }
+
+                        ActiveDialog.Theme -> {
+                            ThemePickerDialog(
+                                selectedTheme = uiState.theme,
+                                onDismiss = { setActiveDialog(ActiveDialog.None) },
+                                onConfirm = onChangeTheme
+                            )
+                        }
+                    }
+                }
+
+                FloatingActionButton(
+                    onClick = {  },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp)
+                        .navigationBarsPadding(),
+                ) {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "Add")
                 }
             }
         }

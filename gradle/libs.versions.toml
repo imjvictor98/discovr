@@ -60,6 +60,9 @@ retrofit = "2.9.0"
 retrofit-kotlinx-serialization-json = "0.8.0"
 okhttp = "4.11.0"
 
+#Moshi
+moshi = "1.14.0"
+
 # Plugins
 android-gradle-plugin = "8.1.2"
 ksp = "1.9.10-1.0.13" # check kotlin version
@@ -155,6 +158,11 @@ linting-composeLints = { group = "com.slack.lint.compose", name = "compose-lint-
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-kotlinx-serialization-json" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+
+#Moshi
+
+moshi = { group = "com.squareup.moshi", name = "moshi", version = "moshi" }
 
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
