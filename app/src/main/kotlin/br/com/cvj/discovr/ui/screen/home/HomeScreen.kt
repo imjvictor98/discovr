@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.cvj.discovr.R
+import br.com.cvj.discovr.navigation.destinations.AddPlaceRouteDestination
 import br.com.cvj.discovr.ui.screen.home.components.LanguagePickerDialog
 import br.com.cvj.discovr.ui.screen.home.components.ThemePickerDialog
 import br.com.cvj.discovr.ui.util.components.loading.LoadingScreen
@@ -31,16 +32,19 @@ import br.com.cvj.discovr.util.AppLanguage
 import br.com.cvj.discovr.util.AppTheme
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @RootNavGraph(start = true)
 @Destination
 @Composable
 fun HomeRoute(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator? = null
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     HomeScreen(
+        navigator = navigator,
         uiState = uiState,
         onChangeTheme = viewModel::updateTheme,
         onChangeLanguage = viewModel::updateLanguage
@@ -52,7 +56,8 @@ fun HomeScreen(
     uiState: HomeUiState,
     onChangeTheme: (AppTheme) -> Unit,
     onChangeLanguage: (AppLanguage) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navigator: DestinationsNavigator? = null
 ) {
     when (uiState) {
         HomeUiState.Loading -> LoadingScreen()
@@ -100,7 +105,7 @@ fun HomeScreen(
                 }
 
                 FloatingActionButton(
-                    onClick = {  },
+                    onClick = { navigator?.navigate(AddPlaceRouteDestination()) },
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .padding(16.dp)
@@ -127,7 +132,7 @@ private fun HomeScreenLoadingPreview() {
     HomeScreen(
         uiState = HomeUiState.Loading,
         onChangeTheme = { },
-        onChangeLanguage = { }
+        onChangeLanguage = { },
     )
 }
 
