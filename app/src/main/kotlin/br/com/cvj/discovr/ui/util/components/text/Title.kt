@@ -8,7 +8,7 @@ import br.com.cvj.discovr.ui.theme.Typography
 import br.com.cvj.discovr.ui.util.components.text.base.BaseText
 
 @Composable
-fun LabelSmall(
+fun TitleSmall(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = Color.Black,
@@ -17,12 +17,12 @@ fun LabelSmall(
         modifier = modifier,
         text = text,
         color = color,
-        style = Typography.labelSmall
+        style = Typography.titleSmall
     )
 }
 
 @Composable
-fun LabelMedium(
+fun TitleMedium(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = Color.Black,
@@ -31,12 +31,12 @@ fun LabelMedium(
         modifier = modifier,
         text = text,
         color = color,
-        style = Typography.labelMedium
+        style = Typography.titleMedium
     )
 }
 
 @Composable
-fun LabelLarge(
+fun TitleLarge(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = Color.Black,
@@ -45,24 +45,24 @@ fun LabelLarge(
         modifier = modifier,
         text = text,
         color = color,
-        style = Typography.labelLarge
+        style = Typography.titleLarge
     )
 }
 
 @Preview
 @Composable
-private fun LabelSmallPreview() {
-    LabelSmall(text = "Label")
+private fun TitleSmallPreview() {
+    TitleSmall(text = "Title")
 }
 
 @Preview
 @Composable
-private fun LabelMediumPreview() {
-    LabelMedium(text = "Label")
+private fun TitleMediumPreview() {
+    TitleMedium(text = "Title")
 }
 
 @Preview
 @Composable
-private fun LabelLargePreview() {
-    LabelLarge(text = "Label")
+private fun TitleLargePreview() {
+    TitleLarge(text = "Label")
 }

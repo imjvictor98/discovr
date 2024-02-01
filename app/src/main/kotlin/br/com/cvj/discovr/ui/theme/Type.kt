@@ -20,21 +20,33 @@ val facundoFamily = FontFamily(
 
 val Typography = Typography(
     labelSmall = TextStyle(
-        fontFamily = facundoFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         letterSpacing = 0.4.sp,
     ),
     labelMedium = TextStyle(
-        fontFamily = facundoFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         letterSpacing = 0.4.sp
     ),
     labelLarge = TextStyle(
-        fontFamily = facundoFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
+        letterSpacing = 0.4.sp
+    ),
+    titleSmall = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        letterSpacing = 0.4.sp
+    ),
+    titleMedium = TextStyle(
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+        letterSpacing = 0.4.sp
+    ),
+    titleLarge = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
         letterSpacing = 0.4.sp
     ),
 )
