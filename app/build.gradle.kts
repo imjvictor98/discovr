@@ -138,6 +138,7 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.compose)
     implementation(libs.icons.eva)
+    implementation(libs.font.awesome)
     implementation(libs.core.splashscreen)
     implementation(libs.appcompat)
 

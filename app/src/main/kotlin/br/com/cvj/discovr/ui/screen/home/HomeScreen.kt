@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +25,7 @@ import br.com.cvj.discovr.R
 import br.com.cvj.discovr.navigation.destinations.AddPlaceRouteDestination
 import br.com.cvj.discovr.ui.screen.home.components.LanguagePickerDialog
 import br.com.cvj.discovr.ui.screen.home.components.ThemePickerDialog
+import br.com.cvj.discovr.ui.util.components.button.fab.ButtonFab
 import br.com.cvj.discovr.ui.util.components.loading.LoadingScreen
 import br.com.cvj.discovr.util.AppLanguage
 import br.com.cvj.discovr.util.AppTheme
@@ -104,15 +103,14 @@ fun HomeScreen(
                     }
                 }
 
-                FloatingActionButton(
+                ButtonFab(
+                    icon = Icons.Default.Add,
                     onClick = { navigator?.navigate(AddPlaceRouteDestination()) },
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .padding(16.dp)
                         .navigationBarsPadding(),
-                ) {
-                    Icon(imageVector = Icons.Default.Add, contentDescription = "Add")
-                }
+                )
             }
         }
 
