@@ -2,20 +2,21 @@ package br.com.cvj.discovr.ui.screen.addplace
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -26,17 +27,18 @@ import br.com.cvj.discovr.R
 import br.com.cvj.discovr.ui.theme.Colors
 import br.com.cvj.discovr.ui.util.components.button.solid.ButtonSolid
 import br.com.cvj.discovr.ui.util.components.button.solid.ButtonSolidType
-import br.com.cvj.discovr.ui.util.components.button.text.ButtonText
 import br.com.cvj.discovr.ui.util.components.stack.HStack
 import br.com.cvj.discovr.ui.util.components.stack.VStack
 import br.com.cvj.discovr.ui.util.components.text.LabelLarge
 import br.com.cvj.discovr.ui.util.components.text.LabelSmall
 import br.com.cvj.discovr.ui.util.components.text.TitleMedium
-import br.com.cvj.discovr.util.ext.pickUpUber
+import br.com.cvj.discovr.util.ext.context.instagram.instagramActions
+import br.com.cvj.discovr.util.ext.context.uber.uberActions
 import com.ramcosta.composedestinations.annotation.Destination
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Brands
 import compose.icons.fontawesomeicons.Solid
+import compose.icons.fontawesomeicons.brands.Instagram
 import compose.icons.fontawesomeicons.brands.Uber
 import compose.icons.fontawesomeicons.solid.Map
 
@@ -52,26 +54,22 @@ fun AddPlaceScreen(
 //    uiState: AddPlaceUiState,
 ) {
     val context = LocalContext.current
-    val gradient = Brush.linearGradient(
-        colors = listOf(
-            Color(0xFFF58529),
-            Color(0xFFDD2A7B),
-            Color(0xFF8134AF),
-            Color(0xFF515BD4)
-        )
-    )
+
     HStack(
         modifier = Modifier
-            .background(color = Colors.BackgroundColor)
-            .fillMaxSize()
-            .safeContentPadding()
+            .padding(vertical = 4.dp)
+            .background(Color.White, shape = RoundedCornerShape(8.dp))
             .then(modifier),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.Top
     ) {
-        VStack {
+        VStack() {
             Image(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(
+                        RoundedCornerShape(8.dp)
+                    ),
                 contentScale = ContentScale.Crop,
                 painter = painterResource(id = R.drawable.test),
                 contentDescription = " "
@@ -83,7 +81,10 @@ fun AddPlaceScreen(
                     .fillMaxWidth()
             ) {
                 VStack(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    TitleMedium(modifier = Modifier.padding(top = 8.dp), text = "Jotaka, Restaurante")
+                    TitleMedium(
+                        modifier = Modifier.padding(top = 8.dp),
+                        text = "Jotaka, Restaurante"
+                    )
                     LabelSmall(
                         modifier = Modifier.padding(bottom = 4.dp),
                         text = "Av. Parque Águas Claras - Águas Claras, Brasília - DF",
@@ -111,14 +112,18 @@ fun AddPlaceScreen(
                     onClick = {}
                 )
 
-                HStack(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                val actionButtonsScroll = rememberScrollState()
+                HStack(
+                    modifier = Modifier.horizontalScroll(actionButtonsScroll),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     ButtonSolid(
                         text = "Ir de Uber",
                         buttonType = ButtonSolidType.FILLED,
                         backgroundColor = Colors.Blue100,
                         textColor = Colors.Blue700,
                         onClick = {
-                            context.pickUpUber()
+                            context.uberActions.pickUpUber()
                         },
                         contentStart = {
                             Icon(
@@ -147,12 +152,26 @@ fun AddPlaceScreen(
                             Spacer(modifier = Modifier.size(8.dp))
                         }
                     )
-                }
 
-                ButtonText(
-                    text = "@jotaka_restaurante",
-                    onClick = {}
-                )
+                    ButtonSolid(
+                        text = "@jotakacozinhabar",
+                        buttonType = ButtonSolidType.FILLED,
+                        backgroundColor = Colors.Blue100,
+                        textColor = Colors.Blue700,
+                        onClick = {
+                            context.instagramActions.openAccount("jotakacozinhabar")
+                        },
+                        contentStart = {
+                            Icon(
+                                modifier = Modifier.size(24.dp),
+                                imageVector = FontAwesomeIcons.Brands.Instagram,
+                                tint = Colors.Blue700,
+                                contentDescription = "Abri no Maps"
+                            )
+                            Spacer(modifier = Modifier.size(8.dp))
+                        }
+                    )
+                }
             }
         }
     }
