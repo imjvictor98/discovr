@@ -18,11 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.cvj.discovr.R
-import br.com.cvj.discovr.R.drawable.ic_99_yellow
 import br.com.cvj.discovr.ui.theme.Colors
 import br.com.cvj.discovr.ui.util.components.button.solid.ButtonSolid
 import br.com.cvj.discovr.ui.util.components.button.solid.ButtonSolidType
@@ -32,10 +32,13 @@ import br.com.cvj.discovr.ui.util.components.stack.VStack
 import br.com.cvj.discovr.ui.util.components.text.LabelLarge
 import br.com.cvj.discovr.ui.util.components.text.LabelSmall
 import br.com.cvj.discovr.ui.util.components.text.TitleMedium
+import br.com.cvj.discovr.util.ext.pickUpUber
 import com.ramcosta.composedestinations.annotation.Destination
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Brands
+import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.brands.Uber
+import compose.icons.fontawesomeicons.solid.Map
 
 @Composable
 @Destination
@@ -48,6 +51,7 @@ fun AddPlaceScreen(
     modifier: Modifier = Modifier,
 //    uiState: AddPlaceUiState,
 ) {
+    val context = LocalContext.current
     val gradient = Brush.linearGradient(
         colors = listOf(
             Color(0xFFF58529),
@@ -111,12 +115,16 @@ fun AddPlaceScreen(
                     ButtonSolid(
                         text = "Ir de Uber",
                         buttonType = ButtonSolidType.FILLED,
-                        onClick = {},
+                        backgroundColor = Colors.Blue100,
+                        textColor = Colors.Blue700,
+                        onClick = {
+                            context.pickUpUber()
+                        },
                         contentStart = {
                             Icon(
                                 modifier = Modifier.size(24.dp),
                                 imageVector = FontAwesomeIcons.Brands.Uber,
-                                tint = Colors.Black100,
+                                tint = Colors.Blue700,
                                 contentDescription = "Ir de Uber",
                             )
                             Spacer(modifier = Modifier.size(8.dp))
@@ -124,14 +132,17 @@ fun AddPlaceScreen(
                     )
 
                     ButtonSolid(
-                        text = "Ir de 99",
+                        text = "Abrir no Maps",
                         buttonType = ButtonSolidType.FILLED,
+                        backgroundColor = Colors.Blue100,
+                        textColor = Colors.Blue700,
                         onClick = {},
                         contentStart = {
-                            Image(
+                            Icon(
                                 modifier = Modifier.size(24.dp),
-                                painter = painterResource(id = ic_99_yellow),
-                                contentDescription = "99",
+                                imageVector = FontAwesomeIcons.Solid.Map,
+                                tint = Colors.Blue700,
+                                contentDescription = "Abri no Maps"
                             )
                             Spacer(modifier = Modifier.size(8.dp))
                         }
