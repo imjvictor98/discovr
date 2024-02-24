@@ -61,7 +61,10 @@ retrofit-kotlinx-serialization-json = "0.8.0"
 okhttp = "4.11.0"
 
 #Moshi
-moshi = "1.14.0"
+moshi = "1.15.0"
+
+#NetworkResponseAdapter
+retrofit-network-response-adapter = "4.1.0"
 
 # Plugins
 android-gradle-plugin = "8.2.2"
@@ -69,6 +72,7 @@ ksp = "1.9.10-1.0.13" # check kotlin version
 gradle-versions = "0.47.0"
 version-catalog-update = "0.8.1"
 junit5-plugin = "1.9.3.0"
+mapsSecretsGradlePlugin = "2.0.1"
 
 [libraries]
 # Kotlin
@@ -163,7 +167,14 @@ retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", v
 
 #Moshi
 
-moshi = { group = "com.squareup.moshi", name = "moshi", version = "moshi" }
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+
+
+#NetworkResponseAdapter
+
+retrofit-networkResponseAdapter = { group = "com.github.haroldadmin", name = "NetworkResponseAdapter", version.ref = "retrofit-network-response-adapter" }
 
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -176,3 +187,4 @@ gradle-versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-
 version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
 junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "junit5-plugin" }
 android-test = { id = "com.android.test", version.ref = "android-gradle-plugin" }
+maps-platform-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsSecretsGradlePlugin" }

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.junit5)
+    alias(libs.plugins.maps.platform.secrets)
 }
 
 val packageName = "br.com.cvj.discovr"
@@ -28,6 +29,10 @@ android {
         androidResources {
             generateLocaleConfig = true
         }
+
+        /* Places */
+        resValue("string", "places_base_url", "https://places.googleapis.com/")
+        resValue("string", "maps_base_url", "https://maps.googleapis.com/maps/api/")
     }
     buildTypes {
         getByName("release") {
@@ -173,6 +178,11 @@ dependencies {
 
     //Moshi
     implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.kotlin.codegen)
+
+    //Network Response Adapter
+    implementation(libs.retrofit.networkResponseAdapter)
 
     // Testing
     // Unit

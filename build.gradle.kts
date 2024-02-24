@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.junit5) apply false
     alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.maps.platform.secrets) apply false
 
     alias(libs.plugins.gradle.versions)
     alias(libs.plugins.version.catalog.update)

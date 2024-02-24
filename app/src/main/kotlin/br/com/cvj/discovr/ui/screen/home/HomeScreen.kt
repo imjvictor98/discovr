@@ -16,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -69,14 +70,18 @@ fun HomeRoute(
     HomeScreen(
         navigator = navigator,
         uiState = uiState,
+        getPlacesNearby = viewModel::getPlacesNearby,
+        getFindPlaces = viewModel::getFindPlaces
     )
 }
 
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
+    getPlacesNearby: (latitude: Double, longitude: Double) -> Unit,
+    getFindPlaces: (name: String) -> Unit,
     modifier: Modifier = Modifier,
-    navigator: DestinationsNavigator? = null
+    navigator: DestinationsNavigator? = null,
 ) {
     when (uiState) {
         HomeUiState.Loading -> LoadingScreen()
@@ -213,6 +218,14 @@ fun HomeScreen(
                         .padding(16.dp)
                         .navigationBarsPadding(),
                 )
+                ButtonFab(
+                    icon = Icons.Default.Delete,
+                    onClick = { getFindPlaces("Vasto") },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(64.dp)
+                        .navigationBarsPadding(),
+                )
             }
         }
 
@@ -230,7 +243,9 @@ sealed interface ActiveDialog {
 @Composable
 private fun HomeScreenLoadingPreview() {
     HomeScreen(
-        uiState = HomeUiState.Loading
+        uiState = HomeUiState.Loading,
+        getPlacesNearby = { _, _ -> },
+        getFindPlaces = { }
     )
 }
 
@@ -238,6 +253,8 @@ private fun HomeScreenLoadingPreview() {
 @Composable
 private fun HomeScreenContentPreview() {
     HomeScreen(
-        uiState = HomeUiState.Success(language = AppLanguage.English, theme = AppTheme.Light)
+        uiState = HomeUiState.Success(language = AppLanguage.English, theme = AppTheme.Light),
+        getPlacesNearby = { _, _ -> },
+        getFindPlaces = { }
     )
 }
