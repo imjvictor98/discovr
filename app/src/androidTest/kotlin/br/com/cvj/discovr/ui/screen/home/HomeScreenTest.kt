@@ -25,8 +25,8 @@ class HomeScreenTest {
         composeTestRule.setContent {
             HomeScreen(
                 uiState = HomeUiState.Loading,
-                onChangeLanguage = { },
-                onChangeTheme = { }
+                getFindPlaces = { },
+                getPlacesNearby = { _, _  -> }
             )
         }
 
@@ -43,8 +43,8 @@ class HomeScreenTest {
                     language = AppLanguage.English,
                     theme = AppTheme.FollowSystem
                 ),
-                onChangeLanguage = { },
-                onChangeTheme = { }
+                getFindPlaces = { },
+                getPlacesNearby = { _, _  -> }
             )
         }
 

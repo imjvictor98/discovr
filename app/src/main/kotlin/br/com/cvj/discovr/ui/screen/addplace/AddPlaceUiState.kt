@@ -1,6 +1,10 @@
 package br.com.cvj.discovr.ui.screen.addplace
 
+import br.com.cvj.discovr.domain.model.google.place.GooglePlaces
+
 sealed interface AddPlaceUiState {
+    data object InitialState : AddPlaceUiState
+
     data object Loading : AddPlaceUiState
 
     data class Error(
@@ -8,6 +12,8 @@ sealed interface AddPlaceUiState {
     ) : AddPlaceUiState
 
     data class Success(
-        val ok: Boolean
-    )
+        val places: List<GooglePlaces.Place>
+    ) : AddPlaceUiState
+
+    data object IsEmpty : AddPlaceUiState
 }

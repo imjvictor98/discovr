@@ -9,6 +9,8 @@ data class GooglePlaces(
 ) {
     @JsonClass(generateAdapter = true)
     data class Place(
+        @Json(name = "place_id")
+        val placeId: String?,
         @Json(name = "accessibilityOptions")
         val accessibilityOptions: AccessibilityOptions?,
         @Json(name = "addressComponents")
@@ -35,6 +37,8 @@ data class GooglePlaces(
         val editorialSummary: EditorialSummary?,
         @Json(name = "formattedAddress")
         val formattedAddress: String?,
+        @Json(name = "formatted_address")
+        val formattedAddressFindPlace: String?,
         @Json(name = "googleMapsUri")
         val googleMapsUri: String?,
         @Json(name = "iconBackgroundColor")

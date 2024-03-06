@@ -12,7 +12,7 @@ class GoogleMapsRepository @Inject constructor(
 ) {
     suspend fun findPlaceFromText(nameToSearch: String) = withContext(dispatcher) {
         googleMapsApi.findPlaceFromText(
-            nameToSearch = nameToSearch
+//            nameToSearch = nameToSearch
         )
     }
 }
