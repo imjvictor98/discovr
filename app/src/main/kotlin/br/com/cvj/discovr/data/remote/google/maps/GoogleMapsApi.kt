@@ -13,6 +13,6 @@ interface GoogleMapsApi {
 //    @Query("input") nameToSearch: String,
 // ): NetworkResponse<GoogleFindPlace, GooglePlacesError>
 
-    @GET("https://demo4252717.mockable.io/findplacefromtext")
+    @GET("http://demo4252717.mockable.io/findplacefromtext")
     suspend fun findPlaceFromText(): NetworkResponse<GoogleFindPlace, GooglePlacesError>
 }
