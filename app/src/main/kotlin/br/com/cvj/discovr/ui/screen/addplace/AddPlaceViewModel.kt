@@ -2,6 +2,7 @@ package br.com.cvj.discovr.ui.screen.addplace
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.cvj.discovr.domain.model.google.place.GooglePlaces
 import br.com.cvj.discovr.domain.repository.google.maps.GoogleMapsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +22,12 @@ class AddPlaceViewModel @Inject constructor(
 
     val addPlaceUiState: StateFlow<AddPlaceUiState>
         get() = _addPlaceUiState
+
+    private val _stepUiState: MutableStateFlow<AddPlaceStepUiState> =
+        MutableStateFlow(AddPlaceStepUiState.InitialState)
+
+    val stepUiState: StateFlow<AddPlaceStepUiState>
+        get() = _stepUiState
 
     fun searchPlaces(name: String) {
         viewModelScope.launch {
@@ -58,5 +65,9 @@ class AddPlaceViewModel @Inject constructor(
                 Timber.e(e)
             }
         }
+    }
+
+    fun addPlace(place: GooglePlaces.Place) {
+        _stepUiState.value = AddPlaceStepUiState.PlaceSelected(place)
     }
 }

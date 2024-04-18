@@ -34,6 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.cvj.discovr.R
 import br.com.cvj.discovr.navigation.destinations.AddPlaceRouteDestination
+import br.com.cvj.discovr.navigation.destinations.AddPlaceStepRouteDestination
 import br.com.cvj.discovr.ui.theme.Colors
 import br.com.cvj.discovr.ui.util.components.button.fab.ButtonFab
 import br.com.cvj.discovr.ui.util.components.button.solid.ButtonSolid
@@ -220,7 +221,10 @@ fun HomeScreen(
                 )
                 ButtonFab(
                     icon = Icons.Default.Delete,
-                    onClick = { getFindPlaces("Vasto") },
+                    onClick = {
+                        // getFindPlaces("Vasto")
+                        navigator?.navigate(AddPlaceStepRouteDestination())
+                    },
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .padding(64.dp)
