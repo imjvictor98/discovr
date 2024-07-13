@@ -4,24 +4,24 @@ kotlin = "1.9.10" # check also ksp
 kotlinx-coroutines = "1.7.3"
 
 # UI
-compose-bom = "2024.02.01"
+compose-bom = "2024.06.00"
 accompanist = "0.33.0-alpha"
-activity-compose = "1.8.2"
+activity-compose = "1.9.0"
 compose = "1.5.0"
 compose-compiler = "1.5.3"
-compose-material3 = "1.2.0"
-androidx-lifecycle = "2.7.0"
+compose-material3 = "1.2.1"
+androidx-lifecycle = "2.8.3"
 coil = "2.5.0"
 composeIcons = "1.0.0"
 core-splashscreen = "1.0.1"
-appcompat = "1.6.1"
+appcompat = "1.7.0"
 
 # Navigation
 compose-destinations = "1.9.62" # check compose version
 
 # Dependency Injection
 hilt = "2.49"
-hilt-navigation-compose = "1.1.0"
+hilt-navigation-compose = "1.2.0"
 
 # Room
 room = "2.6.1"
@@ -29,7 +29,7 @@ room = "2.6.1"
 # Datastore
 protobuf = "3.24.0"
 protobuf-plugin = "0.9.4"
-dataStore = "1.0.0"
+dataStore = "1.1.1"
 
 # Logging
 timber = "5.0.1"
@@ -41,12 +41,12 @@ junit5 = "5.9.3"
 assertk = "0.26.1"
 turbine = "1.0.0"
 ## Instrumented
-test-core = "1.5.0"
-espresso-core = "3.5.1"
-test-ext-junit = "1.1.5"
-test-rules = "1.5.0"
-test-runner = "1.5.2"
-uiAutomator = "2.2.0"
+test-core = "1.6.1"
+espresso-core = "3.6.1"
+test-ext-junit = "1.2.1"
+test-rules = "1.6.1"
+test-runner = "1.6.1"
+uiAutomator = "2.3.0"
 
 # Desugaring
 desugar-jdk-libs = "2.0.4"

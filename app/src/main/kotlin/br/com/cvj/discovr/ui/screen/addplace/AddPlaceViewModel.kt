@@ -2,6 +2,7 @@ package br.com.cvj.discovr.ui.screen.addplace
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.cvj.discovr.domain.model.detail.DetailsPlace
 import br.com.cvj.discovr.domain.model.google.place.GooglePlaces
 import br.com.cvj.discovr.domain.repository.google.maps.GoogleMapsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
@@ -68,6 +69,6 @@ class AddPlaceViewModel @Inject constructor(
     }
 
     fun addPlace(place: GooglePlaces.Place) {
-        _stepUiState.value = AddPlaceStepUiState.PlaceSelected(place)
+        _stepUiState.value = AddPlaceStepUiState.PlaceSelected(DetailsPlace(place))
     }
 }

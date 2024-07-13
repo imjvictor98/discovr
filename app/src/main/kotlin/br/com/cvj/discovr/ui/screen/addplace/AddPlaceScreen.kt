@@ -94,9 +94,7 @@ fun AddPlaceScreen(
     VStack(
         modifier = Modifier
     ) {
-        TitleLarge(modifier = Modifier.padding(top = 24.dp, start = 24.dp), text = "Local")
-
-        HStack(modifier = Modifier.padding(start = 24.dp, end = 24.dp)) {
+        HStack(modifier = Modifier.padding(16.dp)) {
             OutlinedTextField(
                 singleLine = true,
                 textStyle = Typography.labelLarge.copy(fontWeight = FontWeight.Normal),
@@ -154,7 +152,7 @@ fun AddPlaceScreen(
                 if (selectedItem != null || addPlaceUiState.places.isNotEmpty()) {
                     VStack(
                         modifier = Modifier
-                            .padding(24.dp)
+                            .padding(16.dp)
                             .fillMaxWidth(),
                     ) {
                         TitleMedium(text = "Locais encontrados", color = Colors.Black100)
